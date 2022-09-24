@@ -390,43 +390,49 @@ $(document).ready(function () {
     const contactForm = document.getElementById("contact-form")
     const submit = document.getElementById("submit-contact-form");
     const linkError = document.getElementById("error-link-input");
-    const sourceLinkField = document.getElementById("link-input");
+    const linkField = document.getElementById("link-input");
+    const linkIcon = document.getElementById("link-icon");
     const typeError = document.getElementById("error-type-input");
     const typeField = document.getElementById("type-input");
+    const typeIcon = document.getElementById("type-icon")
     const descriptionError = document.getElementById("error-description-input");
     const descriptionField = document.getElementById("description-input");
 
-    submit.addEventListener("click", validateSource);
-    sourceLinkField.addEventListener("focus", removeErrorSource)
+    submit.addEventListener("click", validateContactForm);
+    linkField.addEventListener("focus", removeErrorLink)
     typeField.addEventListener("focus", removeErrorType)
     descriptionField.addEventListener("focus", removeErrorDescription)
 
-    function validateSource(e) {
+    function validateContactForm(e) {
         e.preventDefault();
 
         let valid = true;
         // validate each entry
-        if (!sourceLinkField.value) {            
+        if (!linkField.value) {            
             linkError.classList.add("invalid-feedback");
             linkError.classList.add("d-block");
             linkError.classList.remove("d-none");
             linkError.setAttribute("aria-hidden", false);
             linkError.setAttribute("aria-invalid", true);
-            sourceLinkField.classList.add("is-invalid")
+            linkIcon.classList.add("text-danger");
+            linkIcon.classList.remove("text-secondary");
+            linkField.classList.add("is-invalid");
         } else if (!typeField.value) {
             typeError.classList.add("invalid-feedback");
             typeError.classList.add("d-block");
             typeError.classList.remove("d-none");
             typeError.setAttribute("aria-hidden", false);
             typeError.setAttribute("aria-invalid", true);
-            typeField.classList.add("is-invalid")
+            typeIcon.classList.add("text-danger");
+            typeIcon.classList.remove("text-secondary");
+            typeField.classList.add("is-invalid");
         } else if (!descriptionField.value) {
             descriptionError.classList.add("invalid-feedback");
             descriptionError.classList.add("d-block");
             descriptionError.classList.remove("d-none");
             descriptionError.setAttribute("aria-hidden", false);
             descriptionError.setAttribute("aria-invalid", true);
-            descriptionField.classList.add("is-invalid")
+            descriptionField.classList.add("is-invalid");
         } else {
             contactForm.submit();
             document.getElementById("link-input").value = "";
@@ -435,16 +441,18 @@ $(document).ready(function () {
         }
         return valid;
     }
-    
+
     // remove error messages when the field is focused
-    function removeErrorSource(e) {
+    function removeErrorLink(e) {
         e.preventDefault();
         linkError.classList.remove("invalid-feedback");
         linkError.classList.remove("d-block");
         linkError.classList.add("d-none");
         linkError.setAttribute("aria-hidden", true);
         linkError.setAttribute("aria-invalid", false);
-        sourceLinkField.classList.remove("is-invalid")
+        linkIcon.classList.add("text-secondary");
+        linkIcon.classList.remove("text-danger");
+        linkField.classList.remove("is-invalid");
     }
 
     function removeErrorType(e) {
@@ -454,7 +462,9 @@ $(document).ready(function () {
         typeError.classList.add("d-none");
         typeError.setAttribute("aria-hidden", true);
         typeError.setAttribute("aria-invalid", false);
-        typeField.classList.remove("is-invalid")
+        typeIcon.classList.add("text-secondary");
+        typeIcon.classList.remove("text-danger");
+        typeField.classList.remove("is-invalid");
     }
 
     function removeErrorDescription(e) {
@@ -464,7 +474,7 @@ $(document).ready(function () {
         descriptionError.classList.add("d-none");
         descriptionError.setAttribute("aria-hidden", true);
         descriptionError.setAttribute("aria-invalid", false);
-        descriptionField.classList.remove("is-invalid")
+        descriptionField.classList.remove("is-invalid");
     }
 
 });   
