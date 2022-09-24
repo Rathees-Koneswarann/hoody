@@ -398,6 +398,7 @@ $(document).ready(function () {
 
     submit.addEventListener("click", validateSource);
     sourceLinkField.addEventListener("focus", removeErrorSource)
+    typeField.addEventListener("focus", removeErrorType)
 
     function validateSource(e) {
         e.preventDefault();
@@ -411,6 +412,13 @@ $(document).ready(function () {
             linkError.setAttribute("aria-hidden", false);
             linkError.setAttribute("aria-invalid", true);
             sourceLinkField.classList.add("is-invalid")
+        } else if (!typeField.value) {
+            typeError.classList.add("invalid-feedback");
+            typeError.classList.add("d-block");
+            typeError.classList.remove("d-none");
+            typeError.setAttribute("aria-hidden", false);
+            typeError.setAttribute("aria-invalid", true);
+            typeField.classList.add("is-invalid")
         } else {
             contactForm.submit();
         }
@@ -427,5 +435,14 @@ $(document).ready(function () {
         sourceLinkField.classList.remove("is-invalid")
     }
 
+    function removeErrorType(e) {
+        e.preventDefault();
+        typeError.classList.remove("invalid-feedback");
+        typeError.classList.remove("d-block");
+        typeError.classList.add("d-none");
+        typeError.setAttribute("aria-hidden", true);
+        typeError.setAttribute("aria-invalid", false);
+        typeField.classList.remove("is-invalid")
+    }
 
 });   
