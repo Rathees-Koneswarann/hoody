@@ -405,7 +405,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         let valid = true;
-
+        // validate each entry
         if (!sourceLinkField.value) {            
             linkError.classList.add("invalid-feedback");
             linkError.classList.add("d-block");
@@ -429,10 +429,14 @@ $(document).ready(function () {
             descriptionField.classList.add("is-invalid")
         } else {
             contactForm.submit();
+            document.getElementById("link-input").value = "";
+            document.getElementById("link-input").value = "";
+            document.getElementById("link-input").value = "";
         }
         return valid;
     }
-
+    
+    // remove error messages when the field is focused
     function removeErrorSource(e) {
         e.preventDefault();
         linkError.classList.remove("invalid-feedback");
