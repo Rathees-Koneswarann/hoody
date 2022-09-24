@@ -309,7 +309,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form class="col-12 col-md-8 mx-auto">
+                            <form class="col-12 col-md-8 mx-auto" action="https://docs.google.com/forms/d/e/1FAIpQLSdpSOBzcptdRKXQcY184u3Bj5cH75czNrdUuQSJQYQ0Z18tZg/formResponse" method="post" role="form" onsubmit="return window.submitGoogleForm(this);">
                                 <!-- Form -->
                                 <div class="form-group">
                                     <label for="link-input">Link of the Source</label>
@@ -317,7 +317,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text text-secondary"><span class="fa fa-link" aria-hidden="true"></span></span>
                                         </div>
-                                        <input class="form-control" id="link-input" placeholder="e.g. https://rathees-koneswarann.github.io/hoody/" type="text" aria-label="resource link input">
+                                        <input class="form-control" name="entry.862303003" id="link-input" placeholder="e.g. https://rathees-koneswarann.github.io/hoody/" type="text" aria-label="resource link input">
                                     </div>
                                 </div>
                                 <!-- Form -->
@@ -327,19 +327,20 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text text-secondary"><span class="fa fa-graduation-cap" aria-hidden="true"></span></span>
                                         </div>
-                                        <input class="form-control" id="type-input" placeholder="Designing/Engineering" type="text" aria-label="res type input">
+                                        <input class="form-control" name="entry.1245320944" id="type-input" placeholder="Designing/Engineering" type="text" aria-label="res type input">
                                     </div>
                                 </div>
                                 <!-- Form -->
                                 <div class="form-group">
                                     <label for="description-input">Why Do We Need It?</label>
-                                    <textarea class="form-control" placeholder="Some words about the resource..." id="description-input" rows="4"></textarea>
+                                    <textarea class="form-control" name="entry.274151848" placeholder="Some words about the resource..." id="description-input" rows="4"></textarea>
                                 </div>
                                 <!-- End of Form -->
-                            </form>
+                            
                             <div class="card-footer px-0 mx-auto">
                                 <button type="submit" class="btn btn-primary text-secondary">Share Now</button>
                             </div>
+                        </form>
                         </div>
                         <!-- End of Contact Card -->
                     </div>
@@ -385,6 +386,9 @@
 
     <!-- Neumorphism JS -->
     <script src="./assets/js/neumorphism.js"></script>
+
+        <!-- Google form JS -->
+        <script src="./assets/js/google_form.js"></script>
 </body>
 
 </html>
