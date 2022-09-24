@@ -403,38 +403,51 @@ $(document).ready(function () {
     typeField.addEventListener("focus", removeErrorType)
     descriptionField.addEventListener("focus", removeErrorDescription)
 
+    // add styles for errors
+    function addErrorStyle(inputField, errorField, icon = 0) {
+        errorField.classList.add("invalid-feedback");
+        errorField.classList.add("d-block");
+        errorField.classList.remove("d-none");
+        errorField.setAttribute("aria-hidden", false);
+        errorField.setAttribute("aria-invalid", true);
+        inputField.classList.add("is-invalid");
+
+        if (icon !== 0) {
+            icon.classList.add("text-danger");
+            icon.classList.remove("text-secondary");
+        }
+    }
+
+    // remove styles for errors
+    function removeErrorStyle(inputField, errorField, icon = 0) {
+        errorField.classList.remove("invalid-feedback");
+        errorField.classList.remove("d-block");
+        errorField.classList.add("d-none");
+        errorField.setAttribute("aria-hidden", true);
+        errorField.setAttribute("aria-invalid", false);
+        inputField.classList.remove("is-invalid");
+
+        if (icon !== 0) {
+            icon.classList.add("text-secondary");
+            icon.classList.remove("text-danger");
+        }
+    }
+
     function validateContactForm(e) {
         e.preventDefault();
 
         let valid = true;
+
         // validate each entry
-        if (!linkField.value) {            
-            linkError.classList.add("invalid-feedback");
-            linkError.classList.add("d-block");
-            linkError.classList.remove("d-none");
-            linkError.setAttribute("aria-hidden", false);
-            linkError.setAttribute("aria-invalid", true);
-            linkIcon.classList.add("text-danger");
-            linkIcon.classList.remove("text-secondary");
-            linkField.classList.add("is-invalid");
+        if (!linkField.value) {
+            addErrorStyle(linkField, linkError, linkIcon)
         } else if (!typeField.value) {
-            typeError.classList.add("invalid-feedback");
-            typeError.classList.add("d-block");
-            typeError.classList.remove("d-none");
-            typeError.setAttribute("aria-hidden", false);
-            typeError.setAttribute("aria-invalid", true);
-            typeIcon.classList.add("text-danger");
-            typeIcon.classList.remove("text-secondary");
-            typeField.classList.add("is-invalid");
+            addErrorStyle(typeField, typeError, typeIcon)
         } else if (!descriptionField.value) {
-            descriptionError.classList.add("invalid-feedback");
-            descriptionError.classList.add("d-block");
-            descriptionError.classList.remove("d-none");
-            descriptionError.setAttribute("aria-hidden", false);
-            descriptionError.setAttribute("aria-invalid", true);
-            descriptionField.classList.add("is-invalid");
+            addErrorStyle(descriptionField, descriptionError)
         } else {
             contactForm.submit();
+            // set empty values after submission
             document.getElementById("link-input").value = "";
             document.getElementById("link-input").value = "";
             document.getElementById("link-input").value = "";
@@ -445,40 +458,21 @@ $(document).ready(function () {
     // remove error messages when the field is focused
     function removeErrorLink(e) {
         e.preventDefault();
-        linkError.classList.remove("invalid-feedback");
-        linkError.classList.remove("d-block");
-        linkError.classList.add("d-none");
-        linkError.setAttribute("aria-hidden", true);
-        linkError.setAttribute("aria-invalid", false);
-        linkIcon.classList.add("text-secondary");
-        linkIcon.classList.remove("text-danger");
-        linkField.classList.remove("is-invalid");
+        removeErrorStyle(linkField, linkError, linkIcon)
     }
 
     function removeErrorType(e) {
         e.preventDefault();
-        typeError.classList.remove("invalid-feedback");
-        typeError.classList.remove("d-block");
-        typeError.classList.add("d-none");
-        typeError.setAttribute("aria-hidden", true);
-        typeError.setAttribute("aria-invalid", false);
-        typeIcon.classList.add("text-secondary");
-        typeIcon.classList.remove("text-danger");
-        typeField.classList.remove("is-invalid");
+        removeErrorStyle(typeField, typeError, typeIcon)
     }
 
     function removeErrorDescription(e) {
         e.preventDefault();
-        descriptionError.classList.remove("invalid-feedback");
-        descriptionError.classList.remove("d-block");
-        descriptionError.classList.add("d-none");
-        descriptionError.setAttribute("aria-hidden", true);
-        descriptionError.setAttribute("aria-invalid", false);
-        descriptionField.classList.remove("is-invalid");
+        removeErrorStyle(descriptionField, descriptionError)
     }
 
     // If navbar is collapsed, after a click event, closes the navbar.
-    $(".navbar a").click(function(event) {
+    $(".navbar a").click(function (event) {
         // check if window is small enough so dropdown is created
         var toggle = $(".navbar-toggler").is(":visible");
         if (toggle) {
