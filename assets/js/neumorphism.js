@@ -477,4 +477,13 @@ $(document).ready(function () {
         descriptionField.classList.remove("is-invalid");
     }
 
+    // If navbar is collapsed, after a click event, closes the navbar.
+    $(".navbar a").click(function(event) {
+        // check if window is small enough so dropdown is created
+        var toggle = $(".navbar-toggler").is(":visible");
+        if (toggle) {
+            $(".navbar-collapse").collapse('hide');
+        }
+    });
+
 });   
