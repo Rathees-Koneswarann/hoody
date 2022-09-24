@@ -449,8 +449,8 @@ $(document).ready(function () {
             contactForm.submit();
             // set empty values after submission
             document.getElementById("link-input").value = "";
-            document.getElementById("link-input").value = "";
-            document.getElementById("link-input").value = "";
+            document.getElementById("type-input").value = "";
+            document.getElementById("description-input").value = "";
         }
         return valid;
     }
