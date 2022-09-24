@@ -399,6 +399,7 @@ $(document).ready(function () {
     submit.addEventListener("click", validateSource);
     sourceLinkField.addEventListener("focus", removeErrorSource)
     typeField.addEventListener("focus", removeErrorType)
+    descriptionField.addEventListener("focus", removeErrorDescription)
 
     function validateSource(e) {
         e.preventDefault();
@@ -419,6 +420,13 @@ $(document).ready(function () {
             typeError.setAttribute("aria-hidden", false);
             typeError.setAttribute("aria-invalid", true);
             typeField.classList.add("is-invalid")
+        } else if (!descriptionField.value) {
+            descriptionError.classList.add("invalid-feedback");
+            descriptionError.classList.add("d-block");
+            descriptionError.classList.remove("d-none");
+            descriptionError.setAttribute("aria-hidden", false);
+            descriptionError.setAttribute("aria-invalid", true);
+            descriptionField.classList.add("is-invalid")
         } else {
             contactForm.submit();
         }
@@ -443,6 +451,16 @@ $(document).ready(function () {
         typeError.setAttribute("aria-hidden", true);
         typeError.setAttribute("aria-invalid", false);
         typeField.classList.remove("is-invalid")
+    }
+
+    function removeErrorDescription(e) {
+        e.preventDefault();
+        descriptionError.classList.remove("invalid-feedback");
+        descriptionError.classList.remove("d-block");
+        descriptionError.classList.add("d-none");
+        descriptionError.setAttribute("aria-hidden", true);
+        descriptionError.setAttribute("aria-invalid", false);
+        descriptionField.classList.remove("is-invalid")
     }
 
 });   
