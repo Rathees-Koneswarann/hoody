@@ -191,23 +191,23 @@ $(document).ready(function () {
     }
 
     if ($("#input-slider-vertical-2")[0]) {
-    var c = document.getElementById("input-slider-vertical-2"),
-        d = document.getElementById("input-slider-range-value-low"),
-        e = document.getElementById("input-slider-range-value-high"),
-        f = [d, e];
+        var c = document.getElementById("input-slider-vertical-2"),
+            d = document.getElementById("input-slider-range-value-low"),
+            e = document.getElementById("input-slider-range-value-high"),
+            f = [d, e];
 
-    noUiSlider.create(c, {
-        start: [parseInt(d.getAttribute('data-range-value-low')), parseInt(e.getAttribute('data-range-value-high'))],
-        connect: !0,
-        tooltips: true,
-        orientation: 'vertical',
-        range: {
-            min: parseInt(c.getAttribute('data-range-value-min')),
-            max: parseInt(c.getAttribute('data-range-value-max'))
-        }
-    }), c.noUiSlider.on("update", function (a, b) {
-        f[b].textContent = a[b]
-    })
+        noUiSlider.create(c, {
+            start: [parseInt(d.getAttribute('data-range-value-low')), parseInt(e.getAttribute('data-range-value-high'))],
+            connect: !0,
+            tooltips: true,
+            orientation: 'vertical',
+            range: {
+                min: parseInt(c.getAttribute('data-range-value-min')),
+                max: parseInt(c.getAttribute('data-range-value-max'))
+            }
+        }), c.noUiSlider.on("update", function (a, b) {
+            f[b].textContent = a[b]
+        })
     }
 
     //Progress bars
@@ -222,9 +222,9 @@ $(document).ready(function () {
                 opacity: "1"
             });
         }, {
-                triggerOnce: true,
-                offset: '60%'
-            });
+            triggerOnce: true,
+            offset: '60%'
+        });
     });
 
     // When in viewport
@@ -385,5 +385,47 @@ $(document).ready(function () {
     });
 
     $('.current-year').text(new Date().getFullYear());
+
+    // contact form validation
+    const contactForm = document.getElementById("contact-form")
+    const submit = document.getElementById("submit-contact-form");
+    const linkError = document.getElementById("error-link-input");
+    const sourceLinkField = document.getElementById("link-input");
+    const typeError = document.getElementById("error-type-input");
+    const typeField = document.getElementById("type-input");
+    const descriptionError = document.getElementById("error-description-input");
+    const descriptionField = document.getElementById("description-input");
+
+    submit.addEventListener("click", validateSource);
+    sourceLinkField.addEventListener("focus", removeErrorSource)
+
+    function validateSource(e) {
+        e.preventDefault();
+
+        let valid = true;
+
+        if (!sourceLinkField.value) {            
+            linkError.classList.add("invalid-feedback");
+            linkError.classList.add("d-block");
+            linkError.classList.remove("d-none");
+            linkError.setAttribute("aria-hidden", false);
+            linkError.setAttribute("aria-invalid", true);
+            sourceLinkField.classList.add("is-invalid")
+        } else {
+            contactForm.submit();
+        }
+        return valid;
+    }
+
+    function removeErrorSource(e) {
+        e.preventDefault();
+        linkError.classList.remove("invalid-feedback");
+        linkError.classList.remove("d-block");
+        linkError.classList.add("d-none");
+        linkError.setAttribute("aria-hidden", true);
+        linkError.setAttribute("aria-invalid", false);
+        sourceLinkField.classList.remove("is-invalid")
+    }
+
 
 });   

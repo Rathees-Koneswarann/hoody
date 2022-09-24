@@ -171,7 +171,7 @@
 
                             <form class="col-12 col-md-8 mx-auto"
                                 action="https://docs.google.com/forms/d/e/1FAIpQLSdpSOBzcptdRKXQcY184u3Bj5cH75czNrdUuQSJQYQ0Z18tZg/formResponse"
-                                method="post" role="form" onsubmit="window.submitGoogleForm(this);">
+                                method="post" role="form" onsubmit="window.submitGoogleForm(this);" id="contact-form">
                                 <!-- Form -->
                                 <div class="form-group">
                                     <label for="link-input">Link of the Source</label>
@@ -182,8 +182,9 @@
                                         </div>
                                         <input class="form-control" name="entry.862303003" id="link-input"
                                             placeholder="e.g. https://hoody.com" type="text"
-                                            aria-label="resource link input" required="required">
+                                            aria-label="resource link input" required="required">                                            
                                     </div>
+                                    <div role="alert" class="d-none" id="error-link-input" aria-hidden="true">Please enter a link</div>
                                 </div>
                                 <!-- Form -->
                                 <div class="form-group">
@@ -195,8 +196,9 @@
                                         </div>
                                         <input class="form-control" name="entry.1245320944" id="type-input"
                                             placeholder="Designing/Engineering" type="text" aria-label="res type input"
-                                            required="required">
+                                            required="required">                                        
                                     </div>
+                                    <div role="alert" class="d-none" id="error-type-input" aria-hidden="true">Please enter a categary or course</div>
                                 </div>
                                 <!-- Form -->
                                 <div class="form-group">
@@ -204,11 +206,12 @@
                                     <textarea class="form-control" name="entry.274151848"
                                         placeholder="Some words about the resource..." id="description-input" rows="4"
                                         required="required"></textarea>
+                                        <div role="alert" class="d-none" id="error-description-input" aria-hidden="true">Please add a description</div>
                                 </div>
                                 <!-- End of Form -->
 
                                 <div class="card-footer px-0 mx-auto text-center">
-                                    <button type="submit" class="btn btn-primary text-secondary">Share Now</button>
+                                    <button type="submit" class="btn btn-primary text-secondary" id="submit-contact-form">Share Now</button>
                                 </div>
                             </form>
                         </div>
