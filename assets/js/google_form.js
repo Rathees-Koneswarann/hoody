@@ -20,12 +20,7 @@
   
       form.parentNode.className += ' submitted';
   
-      var res = confirm("Thank you for your message. \n\nI will update it as soon as possible. \n\nKind regards, \nRathees");
-      if (res == true)
-      {
-        window.location.replace("https://rathees-koneswarann.github.io/hoody/");
-      }
-  
+    
       return false;
     }
   }(typeof module === 'undefined' ? window : module.exports);
