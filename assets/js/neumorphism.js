@@ -480,5 +480,16 @@ $(document).ready(function () {
         }
     });
 
+    // change progress bar width with scrolling
+    $(document).ready(function() {
+        var docHeight = $(document).height(),
+        scrollPercent;
+      
+        $(window).scroll(function() {
+          scrollPercent = ($(window).scrollTop() / docHeight) * 100;
+      
+          $('.scroll-progress').width(scrollPercent + '%');
+          });
+          });
 
 });   
