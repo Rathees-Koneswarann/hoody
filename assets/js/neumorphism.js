@@ -482,7 +482,7 @@ $(document).ready(function () {
 
     // change progress bar width with scrolling
     $(document).ready(function() {
-        var docHeight = $(document).height(),
+        var docHeight = $('#body').height(),
         scrollPercent;
       
         $(window).scroll(function() {
