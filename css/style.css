@@ -1,0 +1,13 @@
+.scroll-progress-container {
+    width: 100%;
+    height: 5px;
+    background-color: white;
+    top: 55px;
+    position: absolute;
+  }
+  
+  .scroll-progress {
+    width: 0px;
+    height: 5px;
+    background-color: purple;
+  }
