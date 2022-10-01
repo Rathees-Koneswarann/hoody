@@ -10,12 +10,10 @@
     background-color: #0056B3;
   }
 
-  .page-not-found {
-  /* Full height */
-  height: 100%;
+  #page-not-found {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  }
